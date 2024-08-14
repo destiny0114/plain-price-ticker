@@ -37,35 +37,35 @@ body {
     align-items: center;
     display: flex;
     position: relative;
-    animation: marquee 140s linear infinite;
+    animation: marquee 60s linear infinite;
     will-change: transform;
 }
 
 #marquee__2 .marquee__inner-wrap {
     transform: translateX(2560px);
-    animation: slideIn 19s linear forwards;
+    animation: slideIn 34s linear forwards;
 }
 
 #marquee__2 .marquee__inner {
-    animation-delay: 19s;
+    animation-delay: 34s;
 }
 
 #marquee__3 .marquee__inner-wrap {
     transform: translateX(5120px);
-    animation: slideIn 38s linear forwards;
+    animation: slideIn 68s linear forwards;
 }
 
 #marquee__3 .marquee__inner {
-    animation-delay: 38s;
+    animation-delay: 68s;
 }
 
 #marquee__4 .marquee__inner-wrap {
     transform: translateX(7680px);
-    animation: slideIn 57s linear forwards;
+    animation: slideIn 102s linear forwards;
 }
 
 #marquee__4 .marquee__inner {
-    animation-delay: 57s;
+    animation-delay: 102s;
 }
 
 .marquee__item {
@@ -99,18 +99,19 @@ body {
 
 @keyframes marquee2 {
     to {
-        transform: translateX(-20180px);
+        transform: translateX(-5680px);
+        /*transform: translateX(-20180px);*/
     }
 }
 
 @keyframes marquee3 {
     to {
-        transform: translateX(-21460px);
+        transform: translateX(-6920px);
     }
 }
 
 @keyframes marquee4 {
     to {
-        transform: translateX(-22740px);
+        transform: translateX(-8200px);
     }
 }
