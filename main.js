@@ -88,10 +88,29 @@ window.addEventListener("load", (event) => {
     }
   }
 
+  async function pollTickerInterval(exchange, symbols) {
+    try {
+      const data = await exchange.fetchTickers(symbols);
+
+      Object.entries(data).forEach(([symbol, ticker]) => {
+        updateTicker(
+          document.querySelectorAll(`.marquee__item[data-symbol="${symbol}"]`),
+          ticker,
+          exchange,
+        );
+      });
+    } catch (e) {
+      console.error(e);
+      loop = false;
+    }
+  }
+
   async function main() {
     const exchange = new ccxt.pro.binance();
 
-    await watchTickerLoop(exchange, coins);
+    await pollTickerInterval(exchange, coins);
+    setInterval(async () => await pollTickerInterval(exchange, coins), 60000);
+    // await watchTickerLoop(exchange, coins);
     await exchange.close();
   }
 
@@ -121,7 +140,7 @@ function initialize(container) {
   const marqueeContent = Array.from(container.children);
   marqueeContent.forEach(function (item) {
     const clonedItem = item.cloneNode(true);
-    clonedItem.setAttribute("aria-hidden", true);
+    // clonedItem.setAttribute("aria-hidden", true);
     container.appendChild(clonedItem);
   });
 }
